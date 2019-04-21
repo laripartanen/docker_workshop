@@ -1,0 +1,34 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mynginx-service
+spec:
+  selector:
+    app: mynginx-app
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    name: http
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mynginx-deployment
+spec:
+  selector:
+    matchLabels:
+      app: mynginx-app
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: mynginx-app
+        version: v1
+    spec:
+      containers:
+      - name: mynginx-container
+        image: laripartanen/mynginx:latest
+        ports:
+        - containerPort: 80
