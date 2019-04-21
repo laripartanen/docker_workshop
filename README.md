@@ -40,5 +40,6 @@ docker volume ls
 1. Get GCP account: https://cloud.google.com/free/
 2. Create GKE cluster
 3. Install gcloud (GCP client) and kubectl (K8s client) on your laptop
+4. Login to GCP: gcloud auth login
 4. Connect kubectl to GKE cluster (instructions from Connect button in the GKE UI)
-5. kubectl apply -f nginx.yaml
+5. Deploy app: kubectl apply -f nginx.yaml
